@@ -1,6 +1,6 @@
 
 
-class Customer (val name: String, val address: String){
+class Customer (val name: String, val address: String) extends Ordered[Customer]{
   private var _id = ""
   private var totalValue = 0
   
@@ -14,6 +14,10 @@ class Customer (val name: String, val address: String){
   def total: Double = {
     totalValue
   }
+  
+  def compare(that: Customer): Int = name.compare(that.name)
+  
+  override def toString: String = name + " $ " + address
 }
 
 class CustormerConDescuento(name: String, address: String) extends Customer(name, address){
